@@ -32,7 +32,7 @@ const useStateSync = (initial: any) => {
 type ButtonTypeModified = Omit<ButtonType, 'onPress'>;
 
 export type ButtonProgressType = {
-  onPress: (event: React.MouseEvent, next: () => void) => void;
+  onPress: (event: React.MouseEvent, next: (endState?: boolean, errorLabel?: string|null) => void) => void;
   loadingLabel?: string;
   resultLabel?: string;
   releaseDelay?: number;
@@ -153,6 +153,7 @@ const AwesomeButtonProgress = ({
       onMouseDown={handleActivation}
       cssModule={cssModule}
       active={active}
+      disabled={disabled}
       extra={
         <span>
           <span
